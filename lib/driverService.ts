@@ -5,6 +5,7 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  Timestamp,
 } from "firebase/firestore";
 
 export interface Driver {
@@ -32,6 +33,30 @@ export interface Driver {
   createdAt?: Date;
 }
 
+// Utility function to parse createdAt
+function parseCreatedAt(createdAt: any): Date | undefined {
+  try {
+    if (!createdAt) {
+      console.log("createdAt is undefined or null");
+      return undefined;
+    }
+    if (createdAt instanceof Timestamp) {
+      console.log("createdAt is a Timestamp");
+      return createdAt.toDate();
+    }
+    if (typeof createdAt === "string") {
+      console.log("createdAt is a string:", createdAt);
+      const parsedDate = new Date(createdAt);
+      return isNaN(parsedDate.getTime()) ? undefined : parsedDate;
+    }
+    console.log("createdAt is of unexpected type:", typeof createdAt, createdAt);
+    return undefined;
+  } catch (error: any) {
+    console.error("Error parsing createdAt:", error.message);
+    return undefined;
+  }
+}
+
 export async function getAllDrivers(): Promise<Driver[]> {
   try {
     const driversCollection = collection(db, "driver_users");
@@ -46,11 +71,12 @@ export async function getAllDrivers(): Promise<Driver[]> {
     console.log("Found documents:", driversSnapshot.size);
     return driversSnapshot.docs.map((doc) => {
       const data = doc.data();
-      console.log("Document data:", data);
+      console.log("Document data:", JSON.stringify(data, null, 2));
+      
       return {
         ...data,
         id: doc.id,
-        createdAt: data.createdAt ? data.createdAt.toDate() : undefined,
+        createdAt: parseCreatedAt(data.createdAt),
         latitude: data.latitude ?? 0,
         longitude: data.longitude ?? 0,
         fullName: data.fullName || "",
