@@ -24,7 +24,7 @@ export function SupportModal({ isOpen, onOpenChange, title }: SupportModalProps)
         </DialogHeader>
 
         <DialogDescription className="pt-4 pb-2 text-center text-gray-700 relative">
-          Contact Richfield Technical team to reset your account password
+          Contact Cruooze Technical team to reset your account password
           <br />
           Thank you for your cooperation
         </DialogDescription>

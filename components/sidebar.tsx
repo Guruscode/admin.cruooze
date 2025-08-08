@@ -45,16 +45,16 @@ const navItems: NavItem[] = [
   { title: "Orders & Intercity", href: "/dashboard/orders", icon: Package }, // merged orders + orders_intercity
   { title: "Payments", href: "/dashboard/payments", icon: CreditCard }, // bank_details, wallet_transaction, withdrawal_history
   // { title: "Services", href: "/dashboard/services", icon: ClipboardList }, // service, intercity_service, vehicle_type
-  // { title: "Documents", href: "/dashboard/documents", icon: FileText }, // documents + driver docs if needed
-  // { title: "Reviews", href: "/dashboard/reviews", icon: Star }, // review_customer, review_driver
+  { title: "Documents", href: "/dashboard/documents", icon: FileText }, // documents + driver docs if needed
+  { title: "Reviews", href: "/dashboard/reviews", icon: Star }, // review_customer, review_driver
   // { title: "Chat", href: "/dashboard/chat", icon: MessageCircle },
-  // { title: "Coupons", href: "/dashboard/coupons", icon: Tag },
-  // { title: "Currency", href: "/dashboard/currency", icon: CreditCard },
-  // { title: "Languages", href: "/dashboard/languages", icon: Languages },
-  // { title: "FAQ", href: "/dashboard/faq", icon: HelpCircle },
+  { title: "Coupons", href: "/dashboard/coupons", icon: Tag },
+  { title: "Currency", href: "/dashboard/currency", icon: CreditCard },
+  { title: "Languages", href: "/dashboard/languages", icon: Languages },
+  { title: "FAQ", href: "/dashboard/faq", icon: HelpCircle },
   // { title: "Onboarding", href: "/dashboard/onboarding", icon: BookOpen },
-  // { title: "Referrals", href: "/dashboard/referrals", icon: Users },
-  // { title: "Settings", href: "/dashboard/settings", icon: Settings },
+  { title: "Referrals", href: "/dashboard/referrals", icon: Users },
+  { title: "Settings", href: "/dashboard/settings", icon: Settings },
 ]
 
 export function Sidebar() {
